@@ -1,0 +1,104 @@
+from zipfile import ZipFile
+from docx import Document
+from docx.shared import Pt
+import os
+
+# Helper function to add sections to the document
+def add_section(doc, title, content):
+    doc.add_heading(title, level=2)
+    doc.add_paragraph(content)
+
+# Create output directory
+output_dir = "/mnt/data/upskill_dm_projects"
+os.makedirs(output_dir, exist_ok=True)
+
+# ---- Project 1 ----
+doc1 = Document()
+doc1.add_heading("Project 1 – Meta Ads Audience for Digital Marketing Course", level=1)
+add_section(doc1, "Objective", "Create an optimized Meta Ads audience for an EdTech company offering a digital marketing course.")
+add_section(doc1, "Target Audience Criteria", """\
+- Location: India (Tier 1 & Tier 2 Cities like Delhi, Mumbai, Coimbatore)
+- Age Group: 18–35 years
+- Gender: All
+- Language: English, Hindi
+- Education: Students, Graduates
+- Interests: Digital Marketing, SEO, Google Ads, Freelancing
+- Behaviors: Engaged shoppers, Page admins
+- Device: Mobile users""")
+add_section(doc1, "Justification", "The selected demographic is the most likely to be interested in upskilling through digital marketing courses.")
+add_section(doc1, "Outcome", "The audience setup helps reduce ad cost, improve CTR, and drive quality leads.")
+file1 = os.path.join(output_dir, "Project_1_Meta_Ads_Audience.docx")
+doc1.save(file1)
+
+# ---- Project 2 ----
+doc2 = Document()
+doc2.add_heading("Project 2 – Social Media Strategy for Smartwatch Launch", level=1)
+add_section(doc2, "Product Overview", "NailX Smartwatch with AI health tracking, waterproof design, long battery life, call/chat features.")
+add_section(doc2, "Platforms", "Instagram, YouTube, Facebook, Twitter/X, LinkedIn")
+add_section(doc2, "Strategy", """\
+- Teasers: Countdown reels and posts (#TimeToNailIt)
+- Launch: Carousel posts, product videos
+- Post-launch: Influencer UGC contests, tech reviews
+- Theme: Futuristic visuals and hashtags""")
+add_section(doc2, "Impact", "Improved brand awareness, customer engagement, and product pre-orders.")
+file2 = os.path.join(output_dir, "Project_2_Social_Media_Strategy.docx")
+doc2.save(file2)
+
+# ---- Project 3 ----
+doc3 = Document()
+doc3.add_heading("Project 3 – Competition Analysis for Payment Gateway", level=1)
+add_section(doc3, "Competitors Analyzed", "Razorpay, Paytm, PhonePe, Instamojo, Cashfree")
+add_section(doc3, "Summary Table", """\
+Razorpay: Good APIs, weak support
+Paytm: Strong brand, poor UX
+PhonePe: Great UPI, weak for merchants
+Instamojo: Easy to use, limited scale
+Cashfree: Enterprise-friendly, hard to integrate""")
+add_section(doc3, "Enhancements for Our Gateway", """\
+- Simple onboarding
+- Transparent pricing
+- Same-day settlements
+- Multi-currency support
+- 24/7 customer service""")
+add_section(doc3, "Outcome", "Increased merchant trust, better feature set, improved user acquisition.")
+file3 = os.path.join(output_dir, "Project_3_Payment_Gateway_Analysis.docx")
+doc3.save(file3)
+
+# ---- Project 4 ----
+doc4 = Document()
+doc4.add_heading("Project 4 – Content Marketing Strategy for FMCG Company", level=1)
+add_section(doc4, "Brand Type", "FMCG similar to ITC - includes food, personal care, hygiene.")
+add_section(doc4, "Content Strategy", """\
+1. Video: #RealEverydayMoments reels
+2. Blog: SEO health articles
+3. Infographic: Ingredient transparency
+4. Behind-the-scenes video
+5. UGC: #MyFMCGMoment contests""")
+add_section(doc4, "Platforms", "Instagram, Facebook, YouTube, Website Blog")
+add_section(doc4, "Outcome", "Boosts engagement, brand loyalty, and organic traffic.")
+file4 = os.path.join(output_dir, "Project_4_Content_Marketing_Strategy.docx")
+doc4.save(file4)
+
+# ---- Project 5 ----
+doc5 = Document()
+doc5.add_heading("Project 5 – SEO-Friendly E-commerce Website Structure", level=1)
+add_section(doc5, "Structure Overview", "Homepage > Categories (Organic, Personal Care, Eco-Home) > Products")
+add_section(doc5, "Categories & Products", """\
+Organic Foods: Turmeric, Rice, Tea, etc.
+Personal Care: Face wash, soap, shampoo, etc.
+Eco-Home: Bamboo brush, steel straw, compost bin""")
+add_section(doc5, "SEO Techniques", """\
+- Clean URLs
+- Internal linking
+- Sitemap.xml
+- Breadcrumbs
+- Mobile optimization""")
+add_section(doc5, "Outcome", "Improved crawlability, better indexing, and search visibility.")
+file5 = os.path.join(output_dir, "Project_5_Ecommerce_Structure.docx")
+doc5.save(file5)
+
+# ---- ZIP All Files ----
+zip_path = "/mnt/data/UpSkill_DigitalMarketing_Projects.zip"
+with ZipFile(zip_path, 'w') as zipf:
+    for file in [file1, file2, file3, file4, file5]:
+        zipf.write(file, os.path.basename(file))
